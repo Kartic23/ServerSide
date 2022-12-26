@@ -14,11 +14,14 @@ router.route('/:userId')
     .delete(deleteUser)
     .put(updateUser);
 
+
+router.route('/:email/:password')
+    .get(Check_login);
+
 router.route('/:email')
     .get(getUser);
  
-router.route('/login')
-    .post(Check_login);
+
 
 
 export default router;

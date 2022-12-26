@@ -19,12 +19,11 @@ export async function getUser(req: Request, res: Response){
 
 
 export async function Check_login(req: Request, res: Response){
-    const newUser: IUser = req.body;
     const db = await connect();
-    const email = newUser.email;
-    const password = newUser.password_digest;
+    const email = req.params.email;
+    const password = req.params.password;
     const user = await db.query('SELECT * FROM users WHERE email = ? and password_digest = ?', [email,password]);
-    return res.json(user);
+    return res.json(user[0]);
 }
 
 
