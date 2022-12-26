@@ -7,8 +7,24 @@ import {IUser} from '../interfaces/user';
 export async function getUsers(req: Request, res: Response): Promise<Response>{
     const db = await connect();
     const users = await db.query('SELECT * FROM users');
-    console.log(users[0]);
     return res.json(users[0]);
+}
+
+export async function getUser(req: Request, res: Response){
+    const db = await connect();
+    const email = req.params.email;
+    const user = await db.query('SELECT * FROM users WHERE email = ?', [email]);
+    return res.json(user[0]);
+}
+
+
+export async function Check_login(req: Request, res: Response){
+    const newUser: IUser = req.body;
+    const db = await connect();
+    const email = newUser.email;
+    const password = newUser.password_digest;
+    const user = await db.query('SELECT * FROM users WHERE email = ? and password_digest = ?', [email,password]);
+    return res.json(user);
 }
 
 
@@ -16,6 +32,7 @@ export async function createUser(req: Request, res: Response){
     const newUser: IUser = req.body;
     const db = await connect();
     await db.query('INSERT INTO users SET ?', [newUser]);
+    console.log(newUser);
     return res.json({
         message: 'User added'
     })
@@ -25,7 +42,7 @@ export async function createUser(req: Request, res: Response){
 export async function deleteUser(req: Request, res: Response){
     const id = req.params.userId;
     const db = await connect();
-     await db.query('DELETE FROM users WHERE id = ?', [id]);
+    await db.query('DELETE FROM users WHERE id = ?', [id]);
     return res.json({
         message: 'User deleted'
     })
