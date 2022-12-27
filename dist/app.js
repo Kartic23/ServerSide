@@ -14,14 +14,37 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.App = void 0;
 const express_1 = __importDefault(require("express"));
+const posts_1 = __importDefault(require("./routes/posts"));
+const users_1 = __importDefault(require("./routes/users"));
+const path_1 = __importDefault(require("path"));
 class App {
-    constructor() {
+    constructor(p) {
         this.app = (0, express_1.default)();
+        this.port = p;
+        this.funcionalitys();
+        this.middlewares();
+        this.routes();
     }
-    listen(n) {
+    middlewares() {
+        this.app.use(express_1.default.json());
+    }
+    funcionalitys() {
+        this.app.use("/", express_1.default.static(path_1.default.join(__dirname, "../../my-app")));
+        this.app.use(function (inRequest, inResponse, inNext) {
+            inResponse.header("Access-Control-Allow-Origin", "*");
+            inResponse.header("Access-Control-Allow-Methods", "GET,POST,DELETE,OPTIONS ");
+            inResponse.header("Access-Control-Allow-Headers", "Origin,X-Requested-With,Content-Type,Accept");
+            inNext();
+        });
+    }
+    routes() {
+        this.app.use('/posts', posts_1.default);
+        this.app.use('/users', users_1.default);
+    }
+    listen() {
         return __awaiter(this, void 0, void 0, function* () {
-            yield this.app.listen(n);
-            console.log('Server na porta', n);
+            yield this.app.listen(this.port);
+            console.log('Server na porta', this.port);
         });
     }
 }

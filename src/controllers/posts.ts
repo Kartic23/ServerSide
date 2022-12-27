@@ -9,6 +9,12 @@ export async function getPosts(req: Request, res: Response): Promise<Response>{
     return res.json(posts[0]);
 }
 
+export async function getPost(req: Request, res: Response){
+    const id = req.params.postId;
+    const db = await connect();
+    const posts = await db.query('SELECT * FROM posts WHERE id = ?', [id]);
+    return res.json(posts[0]);
+}
 
 export async function createPost(req: Request, res: Response){
     const newPost: IPost = req.body;

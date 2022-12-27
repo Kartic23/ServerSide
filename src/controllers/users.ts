@@ -10,19 +10,17 @@ export async function getUsers(req: Request, res: Response): Promise<Response>{
     return res.json(users[0]);
 }
 
-export async function getUser(req: Request, res: Response){
+export async function getUserEmail(req: Request, res: Response){
     const db = await connect();
     const email = req.params.email;
     const user = await db.query('SELECT * FROM users WHERE email = ?', [email]);
     return res.json(user[0]);
 }
 
-
-export async function Check_login(req: Request, res: Response){
+export async function getUserId(req: Request, res: Response){
     const db = await connect();
-    const email = req.params.email;
-    const password = req.params.password;
-    const user = await db.query('SELECT * FROM users WHERE email = ? and password_digest = ?', [email,password]);
+    const userId = req.params.userId;
+    const user = await db.query('SELECT * FROM users WHERE id = ?', [userId]);
     return res.json(user[0]);
 }
 
