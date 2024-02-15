@@ -1,7 +1,7 @@
 API de acesso à base de dados (MySQL)
 
 
-A estrutura da base de dados pode ser consultada [a link] https://github.com/Kartic23/ServerSide/sql/database.sql
+A estrutura da base de dados pode ser consultada [a link](https://github.com/Kartic23/ServerSide/blob/main/sql/database.sql)
 
 API Users
 
