@@ -4,28 +4,33 @@ A estrutura da base de dados pode ser consultada [a link] https://github.com/Kar
 
 API Users
 
-- Todos os utilizadores:<br />
-  GET http://localhost:3000/users<br />
+- Todos os utilizadores:  <br />
+  GET http://localhost:3000/users  <br />
   retorna: JSON string [{"name" :"Kartic Premgi","email": "a71379@ualg.pt","password_digest": "segredo", "created_at": "2023-11-23"},...]
     
-- Busca os utilizadores com um certo email:
-      GET http://localhost:3000/users/:email
+- Busca os utilizadores com um certo email: <br />
+      GET http://localhost:3000/users/:email <br />
       retorna: JSON string [{"name" :"Kartic Premgi","email": "a71379@ualg.pt","password_digest": "segredo", "created_at": "2023-11-23"},...] ou null
 
-- Busca os utilizadores com um certo id:
-      GET http://localhost:3000/users/id/:id
+- Busca os utilizadores com um certo id: <br />
+      GET http://localhost:3000/users/id/:id <br />
       retorna: JSON string [{"name" :"Kartic Premgi","email": "a71379@ualg.pt","password_digest": "segredo", "created_at": "2023-11-23"},...] ou null
     
-- Registo de um utilizador:
-    POST http://localhost:3000/users
+- Registo de um utilizador: <br />
+    POST http://localhost:3000/users <br />
     Body: JSON string {"name" :"Kartic Premgi","email": "a71379@ualg.pt","password_digest": "segredo", "created_at": "2023-11-23"}
     retorna: JSON string {"message": "User added"} ou null
 
-- Atualização de um utilizador:
-    PUT http://localhost:3000/users/:id
-    Body: JSON string {"email": "Kartic23@ualg.pt"}
+- Atualização de um utilizador: <br />
+    PUT http://localhost:3000/users/:id <br />
+    Body: JSON string {"email": "Kartic23@ualg.pt"} <br />
     retorna: JSON string { "message": "User updated" } ou null
 
-  - Apagar um utilizador:
-    DELETE http://localhost:3000/users/:id
-    retorna: JSON string { "message": "User deleted" } ou null
+  - Apagar um utilizador: <br />
+    DELETE http://localhost:3000/users/:id  <br />
+    retorna: JSON string { "message": "User deleted" } ou null <br />
+
+
+
+API Posts
+
