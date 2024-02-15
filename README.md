@@ -4,9 +4,9 @@ A estrutura da base de dados pode ser consultada [a link] https://github.com/Kar
 
 API Users
 
-- Todos os utilizadores:\n
-    GET http://localhost:3000/users
-    retorna: JSON string [{"name" :"Kartic Premgi","email": "a71379@ualg.pt","password_digest": "segredo", "created_at": "2023-11-23"},...]
+- Todos os utilizadores:
+  GET http://localhost:3000/users
+  retorna: JSON string [{"name" :"Kartic Premgi","email": "a71379@ualg.pt","password_digest": "segredo", "created_at": "2023-11-23"},...]
     
 - Busca os utilizadores com um certo email:
       GET http://localhost:3000/users/:email
