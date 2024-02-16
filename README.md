@@ -1,4 +1,4 @@
-API de acesso à base de dados (MySQL)
+# API de acesso à base de dados (MySQL)
 
 
 A estrutura da base de dados pode ser consultada [aqui](https://github.com/Kartic23/ServerSide/blob/main/sql/database.sql)
